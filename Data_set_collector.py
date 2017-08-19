@@ -21,5 +21,11 @@ def foo1():
                                headers={'X_FANCY_HEADER': 'VERY FANCY'})
         print(result)
     return render_template('submitted.html')
+
+# def auth_with_password(self, email, password):
+#     request_ref = 'https://auth.firebase.com/auth/firebase?firebase={0}&email={1}&password={2}'.\
+#         format(self.fire_base_name, email, password)
+#     request_object = self.requests.get(request_ref)
+#     return request_object.json()
 if __name__ == '__main__':
     app.run()
