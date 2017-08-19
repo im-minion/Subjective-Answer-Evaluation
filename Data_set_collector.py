@@ -6,10 +6,18 @@ firebasevar = firebase.FirebaseApplication('https://datasetcollector-b1daa.fireb
 
 @app.route('/')
 def Base_qstn_paper_set():
+    return render_template('AuthThings.html')
+
+@app.route('/auth',methods=['POST','GET'])
+def auth():
+    if request.method == 'POST':
+        fname = request.form['fname']
+        lname = request.form['lname']
+        print(fname," ",lname)
     return render_template('first.html')
 
 @app.route('/foo',methods=['POST','GET'])
-def foo1():
+def foo():
     if request.method == 'POST':
         first = request.form['first']
         second = request.form['second']

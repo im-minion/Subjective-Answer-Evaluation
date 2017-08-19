@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Login</title>
+
+</head>
+<body>
+<form action="{{ url_for("auth") }}" method="post">
+    <h5>First name: </h5><input type="text" name="fname"><br>
+    <h5>Last name: </h5><input type="text" name="lname"><br>
+    <br>
+    <input type="submit" value="Submit" class=".btn">
+</form>
+</body>
+</html>
