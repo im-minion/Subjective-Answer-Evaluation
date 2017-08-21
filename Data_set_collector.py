@@ -11,8 +11,8 @@ firebase_apikey = "AIzaSyDmbVrxMd2l1Pq18zTvquLUlgBCIPErqqY"
 def Base_qstn_paper_set():
     return render_template('AuthThings.html')
 
-@app.route('/auth',methods=['POST','GET'])
-def auth():
+@app.route('/authSignUp',methods=['POST','GET'])
+def authSignUp():
     if request.method == 'POST':
         email = request.form['emailId']
         password = request.form['password']

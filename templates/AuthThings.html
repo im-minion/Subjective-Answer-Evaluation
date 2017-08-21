@@ -8,12 +8,14 @@
 
 </head>
 <body>
-<form action="{{ url_for("auth") }}" method="post">
+
+<form action="{{ url_for("authSignUp") }}" method="post">
     <h3>Sign Up......</h3>
     <h5>Email    : </h5><input type="text" name="emailId"><br>
     <h5>Password : </h5><input type="password" name="password"><br>
     <br>
     <input type="submit" value="Submit" class=".btn">
 </form>
+
 </body>
 </html>
