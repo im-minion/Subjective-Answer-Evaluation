@@ -20,8 +20,11 @@ def authSignUp():
         email = request.form['emailId']
         password = request.form['password']
         print(email, " ", password)
-        register(email, password)
-        return render_template('first.html')
+        temp = register(email, password)
+        if temp == "success":
+            return render_template('first.html')
+        else:
+            return render_template('AuthThings.html')
 
 
 @app.route('/authSignIn', methods=['POST', 'GET'])
@@ -30,8 +33,11 @@ def authSignIn():
         email = request.form['emailId_in']
         password = request.form['password_in']
         print(email, " ", password)
-        signin(email, password)
-        return render_template('first.html')
+        temp = signin(email, password)
+        if temp == "success":
+            return render_template('first.html')
+        else:
+            return render_template('AuthThings.html')
 
 
 @app.route('/foo', methods=['POST', 'GET'])
@@ -66,8 +72,10 @@ def register(email, password):
     except urllib.error.URLError as e:
         message = json.loads(e.read())
         print(message["error"]["message"])
+        return (message["error"]["message"])
     else:
         print(loader.read())
+        return "success"
 
 def signin(email, password):
     my_data = dict()
@@ -86,8 +94,10 @@ def signin(email, password):
     except urllib.error.URLError as e:
         message = json.loads(e.read())
         print(message["error"]["message"])
+        return (message["error"]["message"])
     else:
         print(loader.read())
+        return "success"
 
 if __name__ == '__main__':
     app.run()
