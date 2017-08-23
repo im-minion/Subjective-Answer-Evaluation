@@ -1,12 +1,25 @@
 import json
 import urllib
 
+import requests
 from flask import Flask, render_template, request
-from firebase import firebase
-
+# from firebase import firebase
+import pyrebase
 app = Flask(__name__)
-firebasevar = firebase.FirebaseApplication('https://datasetcollector-b1daa.firebaseio.com/')
-firebase_apikey = "AIzaSyDmbVrxMd2l1Pq18zTvquLUlgBCIPErqqY"
+email = "null"
+config = {
+    "apiKey": "AIzaSyDmbVrxMd2l1Pq18zTvquLUlgBCIPErqqY",
+    "authDomain": "datasetcollector-b1daa.firebaseapp.com",
+    "databaseURL": "https://datasetcollector-b1daa.firebaseio.com",
+    "projectId": "datasetcollector-b1daa",
+    "storageBucket": "datasetcollector-b1daa.appspot.com",
+    "messagingSenderId": "532795544470"
+}
+
+firebsevar = pyrebase.initialize_app(config=config)
+db = firebsevar.database()
+# firebasevar = firebase.FirebaseApplication('https://datasetcollector-b1daa.firebaseio.com/')
+# firebase_apikey = "AIzaSyDmbVrxMd2l1Pq18zTvquLUlgBCIPErqqY"
 
 @app.route('/')
 def Base_qstn_paper_set():
@@ -17,24 +30,41 @@ def authSignUp():
     if request.method == 'POST':
         email = request.form['emailId']
         password = request.form['password']
-        print(email, " ", password)
-        temp = register(email, password)
-        if temp == "success":
-            return render_template('first.html')
+        # print(email, " ", password)
+        authvar = firebsevar.auth()
+        authvar.create_user_with_email_and_password(email, password)
+        if authvar.current_user == "None":
+            return render_template('<html><head><title>Error</title></head><body><h1>error</h1></body></html>')
         else:
-            return render_template('AuthThings.html')
+            db.child("users").child("email").push(email)
+            return render_template('first.html')
+        # temp = register(email, password)
+        # if temp == "success":
+        #     return render_template('first.html')
+        # else:
+        #     return render_template('AuthThings.html')
 
 @app.route('/authSignIn', methods=['POST', 'GET'])
 def authSignIn():
     if request.method == 'POST':
         email = request.form['emailId_in']
         password = request.form['password_in']
-        print(email, " ", password)
-        temp = signin(email, password)
-        if temp == "success":
+        # print(email, " ", password)
+
+        # temp = signin(email, password)
+        try :
+            authvar = firebsevar.auth()
+            user = authvar.sign_in_with_email_and_password(email, password)
+            authvar = firebsevar.auth()
+            # print(authvar.current_user)
             return render_template('first.html')
-        else:
-            return render_template('AuthThings.html')
+        except requests.exceptions.HTTPError as e:
+            # print(e.__doc__)
+            return render_template('<html><head><title>Error</title></head><body><h1>error</h1></body></html>')
+        # if temp == "success":
+        #     return render_template('first.html')
+        # else:
+        #     return render_template('AuthThings.html')
 
 @app.route('/foo', methods=['POST', 'GET'])
 def foo():
@@ -45,54 +75,57 @@ def foo():
         fourth = request.form['fourth']
         fifth = request.form['fifth']
         ans = [first, second, third, fourth, fifth]
-        result = firebasevar.post('/answers/', data=ans, params={'print': 'pretty'},
-                                  headers={'X_FANCY_HEADER': 'VERY FANCY'})
-        print(result)
-    return render_template('submitted.html')
-
-def register(email, password):
-    my_data = dict()
-    my_data["email"] = email
-    my_data["password"] = password
-    my_data["returnSecureToken"] = True
-    json_data = json.dumps(my_data).encode()
-    headers = {"Content-Type": "application/json"}
-    request = urllib.request.Request(
-        "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=" + firebase_apikey,
-        data=json_data, headers=headers)
-    try:
-        loader = urllib.request.urlopen(request)
-
-    except urllib.error.URLError as e:
-        message = json.loads(e.read())
-        print(message["error"]["message"])
-        return (message["error"]["message"])
-    else:
-        print(loader.read())
-        # userdata = [email,password]
-        # firebasevar.post('/users/', data=userdata, params={'print': 'pretty'},
+        authvar = firebsevar.auth()
+        # print(authvar.current_user)
+        # result = firebasevar.post('/answers/', data=ans, params={'print': 'pretty'},
         #                           headers={'X_FANCY_HEADER': 'VERY FANCY'})
-        return "success"
-
-def signin(email, password):
-    my_data = dict()
-    my_data["email"] = email
-    my_data["password"] = password
-    my_data["returnSecureToken"] = True
-    json_data = json.dumps(my_data).encode()
-    headers = {"Content-Type": "application/json"}
-    request = urllib.request.Request(
-        "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" + firebase_apikey,
-        data=json_data, headers=headers)
-    try:
-        loader = urllib.request.urlopen(request)
-    except urllib.error.URLError as e:
-        message = json.loads(e.read())
-        print(message["error"]["message"])
-        return (message["error"]["message"])
-    else:
-        print(loader.read())
-        return "success"
+        result = db.child("/answers").push(ans)
+        # print(result)
+    return render_template('submitted.html')
+#
+# def register(email, password):
+#     my_data = dict()
+#     my_data["email"] = email
+#     my_data["password"] = password
+#     my_data["returnSecureToken"] = True
+#     json_data = json.dumps(my_data).encode()
+#     headers = {"Content-Type": "application/json"}
+#     request = urllib.request.Request(
+#         "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=" + firebase_apikey,
+#         data=json_data, headers=headers)
+#     try:
+#         loader = urllib.request.urlopen(request)
+#
+#     except urllib.error.URLError as e:
+#         message = json.loads(e.read())
+#         print(message["error"]["message"])
+#         return (message["error"]["message"])
+#     else:
+#         print(loader.read())
+#         # userdata = [email,password]
+#         # firebasevar.post('/users/', data=userdata, params={'print': 'pretty'},
+#         #                           headers={'X_FANCY_HEADER': 'VERY FANCY'})
+#         return "success"
+#
+# def signin(email, password):
+#     my_data = dict()
+#     my_data["email"] = email
+#     my_data["password"] = password
+#     my_data["returnSecureToken"] = True
+#     json_data = json.dumps(my_data).encode()
+#     headers = {"Content-Type": "application/json"}
+#     request = urllib.request.Request(
+#         "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" + firebase_apikey,
+#         data=json_data, headers=headers)
+#     try:
+#         loader = urllib.request.urlopen(request)
+#     except urllib.error.URLError as e:
+#         message = json.loads(e.read())
+#         print(message["error"]["message"])
+#         return (message["error"]["message"])
+#     else:
+#         print(loader.read())
+#         return "success"
 
 if __name__ == '__main__':
     app.run()
