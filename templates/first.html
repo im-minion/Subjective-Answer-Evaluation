@@ -1,57 +1,49 @@
 <html>
 <head>
-    <title>Data Set Collecting....</title>
+    <meta charset="UTF-8">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Data Set Collecting</title>
+    <script>
+        function showAlert() {
+            alert("Response noted! Submit another Response!");
+        }
+    </script>
 </head>
-<body>
-<form action="{{ url_for("foo") }}" method="post">
+<body class="text-center">
+<form class="form-signin" action="{{ url_for("foo") }}" method="post">
     <div class="container">
 
         <br>
-        <h6>Question1 :</h6>
+        <h6 class="h3 mb-3 font-weight-normal">Question1 :</h6>
         <br>
-        <h3>I will ask something Wai8 for it....</h3>
+        <h3 class="h3 mb-3 font-weight-normal">What is Encapsulation? Give Example.</h3>
         <br>
         <textarea name="first" rows="5" cols="100"></textarea><!--name=id -->
         <br>
 
         <br>
-        <h6>Question2 :</h6>
+        <h6 class="h3 mb-3 font-weight-normal">Question2 :</h6>
         <br>
-        <h3>I will ask something Wai8 for it....</h3>
+        <h3 class="h3 mb-3 font-weight-normal">Define Asymptotic Notation and list its types.</h3>
         <br>
         <textarea name="second" rows="5" cols="100"></textarea>
         <br>
 
 
         <br>
-        <h6>Question3 :</h6>
+        <h6 class="h3 mb-3 font-weight-normal">Question3 :</h6>
         <br>
-        <h3>I will ask something Wai8 for it....</h3>
+        <h3>What is Polymorphism ? List its Types.</h3>
         <br>
         <textarea name="third" rows="5" cols="100"></textarea>
         <br>
 
-
-        <br>
-        <h6>Question4 :</h6>
-        <br>
-        <h3>I will ask something Wai8 for it....</h3>
-        <br>
-        <textarea name="fourth" rows="5" cols="100"></textarea>
         <br>
 
-        <br>
-        <h6>Question5 :</h6>
-        <br>
-        <h3>I will ask something Wai8 for it....</h3>
-        <br>
-        <textarea name="fifth" rows="5" cols="100"></textarea>
-        <br>
+        <input type="email" placeholder="Email ID*" name="emailID">
 
-
-        <input type="submit" value="Submit" class=".btn">
+        <input type="submit" value="Submit" class="btn btn-primary" onclick="showAlert()">
 
     </div>
 </form>

@@ -1,10 +1,7 @@
-import json
-import urllib
-
-import requests
 from flask import Flask, render_template, request
 # from firebase import firebase
 import pyrebase
+
 app = Flask(__name__)
 email = "null"
 config = {
@@ -18,53 +15,56 @@ config = {
 
 firebsevar = pyrebase.initialize_app(config=config)
 db = firebsevar.database()
+
+
 # firebasevar = firebase.FirebaseApplication('https://datasetcollector-b1daa.firebaseio.com/')
 # firebase_apikey = "AIzaSyDmbVrxMd2l1Pq18zTvquLUlgBCIPErqqY"
 
 @app.route('/')
 def Base_qstn_paper_set():
-    return render_template('AuthThings.html')
+    return render_template('first.html')
 
-@app.route('/authSignUp', methods=['POST', 'GET'])
-def authSignUp():
-    if request.method == 'POST':
-        email = request.form['emailId']
-        password = request.form['password']
-        # print(email, " ", password)
-        authvar = firebsevar.auth()
-        authvar.create_user_with_email_and_password(email, password)
-        if authvar.current_user == "None":
-            return render_template('<html><head><title>Error</title></head><body><h1>error</h1></body></html>')
-        else:
-            db.child("users").child("email").push(email)
-            return render_template('first.html')
-        # temp = register(email, password)
-        # if temp == "success":
-        #     return render_template('first.html')
-        # else:
-        #     return render_template('AuthThings.html')
 
-@app.route('/authSignIn', methods=['POST', 'GET'])
-def authSignIn():
-    if request.method == 'POST':
-        email = request.form['emailId_in']
-        password = request.form['password_in']
-        # print(email, " ", password)
-
-        # temp = signin(email, password)
-        try :
-            authvar = firebsevar.auth()
-            user = authvar.sign_in_with_email_and_password(email, password)
-            authvar = firebsevar.auth()
-            # print(authvar.current_user)
-            return render_template('first.html')
-        except requests.exceptions.HTTPError as e:
-            # print(e.__doc__)
-            return render_template('<html><head><title>Error</title></head><body><h1>error</h1></body></html>')
-        # if temp == "success":
-        #     return render_template('first.html')
-        # else:
-        #     return render_template('AuthThings.html')
+# @app.route('/authSignUp', methods=['POST', 'GET'])
+# def authSignUp():
+#     if request.method == 'POST':
+#         email = request.form['emailId']
+#         password = request.form['password']
+#         # print(email, " ", password)
+#         authvar = firebsevar.auth()
+#         authvar.create_user_with_email_and_password(email, password)
+#         if authvar.current_user == "None":
+#             return render_template('<html><head><title>Error</title></head><body><h1>error</h1></body></html>')
+#         else:
+#             db.child("users").child("email").push(email)
+#             return render_template('first.html')
+# temp = register(email, password)
+# if temp == "success":
+#     return render_template('first.html')
+# else:
+#     return render_template('AuthThings.html')
+#
+# @app.route('/authSignIn', methods=['POST', 'GET'])
+# def authSignIn():
+#     if request.method == 'POST':
+#         email = request.form['emailId_in']
+#         password = request.form['password_in']
+#         # print(email, " ", password)
+#
+#         # temp = signin(email, password)
+#         try :
+#             authvar = firebsevar.auth()
+#             user = authvar.sign_in_with_email_and_password(email, password)
+#             authvar = firebsevar.auth()
+#             # print(authvar.current_user)
+#             return render_template('first.html')
+#         except requests.exceptions.HTTPError as e:
+#             # print(e.__doc__)
+#             return render_template('<html><head><title>Error</title></head><body><h1>error</h1></body></html>')
+# if temp == "success":
+#     return render_template('first.html')
+# else:
+#     return render_template('AuthThings.html')
 
 @app.route('/foo', methods=['POST', 'GET'])
 def foo():
@@ -72,16 +72,21 @@ def foo():
         first = request.form['first']
         second = request.form['second']
         third = request.form['third']
-        fourth = request.form['fourth']
-        fifth = request.form['fifth']
-        ans = [first, second, third, fourth, fifth]
-        authvar = firebsevar.auth()
+
+        email = request.form['emailID']
+
+        ans = {"1": first, "2": second, "3": third, "email": email}
+
+        result = db.child("/answers").push(ans)
+
+        # authvar = firebsevar.auth()
         # print(authvar.current_user)
         # result = firebasevar.post('/answers/', data=ans, params={'print': 'pretty'},
         #                           headers={'X_FANCY_HEADER': 'VERY FANCY'})
-        result = db.child("/answers").push(ans)
         # print(result)
-    return render_template('submitted.html')
+    return render_template('first.html')
+
+
 #
 # def register(email, password):
 #     my_data = dict()
