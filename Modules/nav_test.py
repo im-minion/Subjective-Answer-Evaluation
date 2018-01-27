@@ -2,6 +2,7 @@ from sklearn.naive_bayes import GaussianNB
 import numpy as np
 import pandas as pd
 import numpy as np
+import pickle
 
 df = pd.read_csv('finaldataset.csv')
 xf = df[['keyword','grammar','qst']]
@@ -22,11 +23,17 @@ n = 0
 class labels 0.1 to 0.9 simplifies to 0 to 9 for calculation purpose
 '''
 
-x = np.array(xf.values)
-yf = df[['class']]
-y = np.array(yf.values).ravel()
-clf = GaussianNB()
-clf.fit(x,y)
+# x = np.array(xf.values)
+# yf = df[['class']]
+# y = np.array(yf.values).ravel()
+# clf = GaussianNB()
+# clf.fit(x,y)
+
+# with open('nav_test.pickle','wb') as f:
+# 	pickle.dump(clf, f)
+
+pickle_in = open('nav_test.pickle','rb')
+clf = pickle.load(pickle_in)
 
 def predict(k, g, q):
 	predicted = clf.predict([[k,g,q]])
@@ -90,5 +97,4 @@ def predict(k, g, q):
 # # model.fit(lx,ly)
 # model.fit(x,y)
 
-# predicted = model.predict([[-1,-3],[-3,2]])
-# print(predicted)
+# predict(2,0,4)
