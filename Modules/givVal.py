@@ -5,6 +5,7 @@ import pyrebase
 import math
 import json
 import requests
+import re
 
 '''
 e = 1
@@ -92,22 +93,49 @@ firebsevar = pyrebase.initialize_app(config=config)
 db = firebsevar.database()
 
 model_answer1 = db.child("model_answers").get().val()[1]['answer']
-out_of1 = db.child("model_answers").get().val()[1]['outof']
-
+out_of1 = db.child("model_answers").get().val()[1]['out_of']
 keywords1 = db.child("model_answers").get().val()[1]['keywords']
-# TODO vinyak : convert above things as list shown below  =>>>
-# keywords1 = ['binds', 'together', 'relevant data', 'data hiding', 'data hiding', 'abstraction', 'combining data']
+keywords1 = re.findall(r"[a-zA-Z]+",keywords1)
+
+model_answer2 = db.child("model_answers").get().val()[2]['answer']
+out_of2 = db.child("model_answers").get().val()[2]['out_of']
+keywords2 = db.child("model_answers").get().val()[2]['keywords']
+keywords2 = re.findall(r"[a-zA-Z]+",keywords2)
+
+model_answer3 = db.child("model_answers").get().val()[3]['answer']
+out_of3 = db.child("model_answers").get().val()[3]['out_of']
+keywords3 = db.child("model_answers").get().val()[3]['keywords']
+keywords3 = re.findall(r"[a-zA-Z]+",keywords3)
+
+
+# print(model_answer1)
+# print(model_answer2)
+# print(model_answer3)
+
+# print(keywords1)
+# print(keywords2)
+# print(keywords3)
 
 
 
+all_answers = db.child("answers").get()
 
-# all_answers = db.child("answers").get()
+for each_users_answers in all_answers.each():
+	# For the first answer ->
+	answer = each_users_answers.val()['1']
+	result = givVal(model_answer1, keywords1, answer, out_of1)
+	db.child("answers").child(each_users_answers.key()).update({"result1":result})
 
-# for each_users_answers in all_answers.each():
-# 	answer = each_users_answers.val()['1']
-# 	TODO : call method givVal(model_answer1, keywords, answer, out_of1)
-# 	below line is for storing the result ->
-	# db.child("answers").child(each_users_answers.key()).update({"1111":"BB"})        
+	# For the Second answer ->
+	answer = each_users_answers.val()['2']
+	result = givVal(model_answer2, keywords2, answer, out_of2)
+	db.child("answers").child(each_users_answers.key()).update({"result2":result})
+
+	# For the third answer ->
+	answer = each_users_answers.val()['3']
+	result = givVal(model_answer3, keywords3, answer, out_of3)
+	db.child("answers").child(each_users_answers.key()).update({"result3":result})
+
 
 
 
