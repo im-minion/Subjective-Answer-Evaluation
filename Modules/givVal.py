@@ -14,6 +14,17 @@ answer2 = 'Encapsulation is hiding data. It can be visualised as an Abstract vie
 
 keywords = ['binds', 'together', 'relevant data', 'data hiding', 'data hiding', 'abstraction', 'combining data']
 
+config = {
+    "apiKey": "AIzaSyDmbVrxMd2l1Pq18zTvquLUlgBCIPErqqY",
+    "authDomain": "datasetcollector-b1daa.firebaseapp.com",
+    "databaseURL": "https://datasetcollector-b1daa.firebaseio.com",
+    "projectId": "datasetcollector-b1daa",
+    "storageBucket": "datasetcollector-b1daa.appspot.com",
+    "messagingSenderId": "532795544470"
+}
+
+firebsevar = pyrebase.initialize_app(config=config)
+db = firebsevar.database()
 '''
 e = 1
 vg = 2
@@ -28,50 +39,58 @@ n = 0
 '''
 
 
-# KEYWORDS =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+def givVal(model_answer, keywords, answer, out_of):
+	# KEYWORDS =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	# TODO : Enhacnce this thing
+	count = 0
+	for i in range(len(keywords)):
+		if keywords[i] in answer:
+			# print (keywords[i])
+			count = count + 1
+	k = 0
+	if(count==len(keywords)):
+		k = 1
+	elif( count== (len(keywords)-1)):
+		k = 2
+	elif (count==(len(keywords)-2)):
+		k = 3
+	elif (count==(len(keywords)-3)):
+		k = 4
+	elif (count==(len(keywords)-4)):
+		k = 5
+	elif (count==(len(keywords)-5)):
+		k = 6
 
-count = 0
-for i in range(len(keywords)):
-	if keywords[i] in answer1:
-		# print (keywords[i])
-		count = count + 1
-k = 0
-if(count==len(keywords)):
-	k = 1
-elif( count== (len(keywords)-1)):
-	k = 2
-elif (count==(len(keywords)-2)):
-	k = 3
-elif (count==(len(keywords)-3)):
-	k = 4
-elif (count==(len(keywords)-4)):
-	k = 5
-elif (count==(len(keywords)-5)):
-	k = 6
+	# GRAMMAR =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# GRAMMAR =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	req = requests.get("https://api.textgears.com/check.php?text="+answer+"&key=JmcxHCCPZ7jfXLF6")
+	no_of_errors = len(req.json()['errors'] )
 
-req = requests.get("https://api.textgears.com/check.php?text="+answer1+"&key=JmcxHCCPZ7jfXLF6")
-no_of_errors = len(req.json()['errors'] )
+	if no_of_errors > 5:
+		g = 0
+	else:
+		g = 1
 
-if no_of_errors > 5:
-	g = 0
-else:
-	g = 1
+	# QST =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# QST =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	print("fuzz1 ratio: ",fuzz.ratio(model_answer,answer))
+	q = math.ceil(fuzz.token_set_ratio(model_answer,answer) * 6 / 100)
 
-print("fuzz1 ratio: ",fuzz.ratio(model_answer,answer1))
-q = math.ceil(fuzz.token_set_ratio(model_answer,answer1) * 6 / 100)
+	print("Keywords : ",k)
+	print("Grammar : ",g)
+	print("Qusestion Specific Things : ",q)
+
+	predicted = nav_test.predict(k,g,q)
+	# Mathematical model->
+	# predicted / 10
+	# what?	/ out_of
+	result = predicted * out_of / 10
+	return result[0]
 
 
-
-print("Keywords : ",k)
-print("Grammar : ",g)
-print("Qusestion Specific Things : ",q)
-
-nav_test.predict(k,g,q)
-
+out_of = 5
+result = givVal(model_answer, keywords, answer1, out_of)
+print("Final Result : ",result)
 
 # print("fuzzz2 : ",fuzz.token_set_ratio(model_answer,answer2))
 

@@ -41,6 +41,7 @@ def predict(k, g, q):
 	print(predicted)
 	print(accuracy)
 	print(np.max(accuracy))
+	return predicted
 
 # predict(2,0,4)
 # predict for 
