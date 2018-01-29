@@ -5,7 +5,7 @@ import numpy as np
 import pickle
 
 df = pd.read_csv('finaldataset.csv')
-xf = df[['keyword','grammar','qst']]
+xf = df[['keyword', 'grammar', 'qst']]
 # intigrate keyword, grammar, qst :)
 ''''
 keywords and qst:
@@ -32,16 +32,17 @@ class labels 0.1 to 0.9 simplifies to 0 to 9 for calculation purpose
 # with open('nav_test.pickle','wb') as f:
 # 	pickle.dump(clf, f)
 
-pickle_in = open('nav_test.pickle','rb')
+pickle_in = open('nav_test.pickle', 'rb')
 clf = pickle.load(pickle_in)
 
+
 def predict(k, g, q):
-	predicted = clf.predict([[k,g,q]])
-	accuracy = clf.predict_proba([[k,g,q]])
-	print(predicted)
-	print(accuracy)
-	print(np.max(accuracy))
-	return predicted
+    predicted = clf.predict([[k, g, q]])
+    accuracy = clf.predict_proba([[k, g, q]])
+    print(predicted)
+    print(accuracy)
+    print(np.max(accuracy))
+    return predicted
 
 # predict(2,0,4)
 # predict for 
