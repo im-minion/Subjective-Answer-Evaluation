@@ -30,17 +30,17 @@ def givVal(model_answer, keywords, answer, out_of):
             # print (keywords[i])
             count = count + 1
     k = 0
-    if (count == len(keywords)):
+    if count == len(keywords):
         k = 1
-    elif (count == (len(keywords) - 1)):
+    elif count == (len(keywords) - 1):
         k = 2
-    elif (count == (len(keywords) - 2)):
+    elif count == (len(keywords) - 2):
         k = 3
-    elif (count == (len(keywords) - 3)):
+    elif count == (len(keywords) - 3):
         k = 4
-    elif (count == (len(keywords) - 4)):
+    elif count == (len(keywords) - 4):
         k = 5
-    elif (count == (len(keywords) - 5)):
+    elif count == (len(keywords) - 5):
         k = 6
 
     # GRAMMAR =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
