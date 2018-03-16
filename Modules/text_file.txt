@@ -1,0 +1,56 @@
+Q1.What is Encapsulation?
+A1.
+    Encapsulation is an object-oriented programming concept that binds together the data and functions that manipulate the data, and that keeps both safe from outside interference and misuse.
+    Data encapsulation led to the important OOP concept of data hiding.
+    If a class does not allow calling code to access internal object data and permits access through methods only, this is a strong form of abstraction or information hiding known as encapsulation.
+    Data encapsulation is a mechanism of bundling the data, and the functions that use them and data abstraction is a mechanism of exposing only the interfaces and hiding the implementation details from the user.
+    Abstraction and encapsulation are complementary concepts: abstraction focuses on the observable behavior of an object. encapsulation focuses upon the implementation that gives rise to this behavior.
+    encapsulation is most often achieved through information hiding, which is the process of hiding all of the secrets of object that do not contribute to its essential characteristics.
+    Encapsulation is the process of combining data and functions into a single unit called class.
+    In Encapsulation, the data is not accessed directly; it is accessed through the functions present inside the class.
+    In simpler words, attributes of the class are kept private and public getter and setter methods are
+    provided to manipulate these attributes.
+    Thus, encapsulation makes the concept of data hiding possible
+    Abstraction is a process where you show only “relevant” data and “hide” unnecessary details of an object from the user.
+ Keywords: OOPS, Object-Oriented, binds, together, “relevant data”, “data hiding”, "abstraction", “combining data and functions”
+ QST:
+    Examples:
+    C++ supports the properties of encapsulation and data hiding through the creation of user-defined types, called classes.
+    We already have studied that a class can contain private, protected and public members. By default, all items defined in a class are private.
+    Java supports four access modifiers that you can use to define the visibility of classes, methods, and attributes.
+    Each of them specifies a different level of accessibility, and you can only use one modifier per class, method or attribute.
+    In simpler words, attributes of the class are kept private and public getter and setter methods are provided to manipulate these attributes.
+    Thus, encapsulation makes the concept of data hiding possible.
+    Consider your mobile phone, you just need to know what buttons are to be pressed to send a message or make a call, What happens when you press a button, how your messages are sent, how your calls are connected is all abstracted away from the use.
+
+Q2. What is Polymorphism?
+A2.
+    Polymorphism means to process objects differently based on their data type.
+    In other words it means, one method with multiple implementation, for a certain class of action. And
+    which implementation to be used is decided at runtime depending upon the situation (i.e., data type of
+    the object)
+    This can be implemented by designing a generic interface, which provides generic methods for a certain
+    class of action and there can be multiple classes, which provides the implementation of these generic
+    methods.
+    In object-oriented programming, polymorphism refers to a programming language&#39;s ability to process
+    objects differently depending on their data type or class. More specifically, it is the ability to redefine
+    methods for derived classes.
+ Keywords: “one name many forms” , “generic interface”,” implementation”,” runtime”,” same method
+    name”,” same function name”
+ QST:
+    Polymorphism could be static and dynamic both. Method Overloading is static polymorphism while,
+    Method overriding is dynamic polymorphism.
+
+    Overloading in simple words means more than one method having the same method name that behaves
+    differently based on the arguments passed while calling the method. This called static because, which
+    method to be invoked is decided at the time of compilation
+    Overriding means a derived class is implementing a method of its super class. The call to overriden
+    method is resolved at runtime, thus called runtime polymorphism
+    types of polymorphism. There are two types of polymorphism
+
+    1) Static Polymorphism also known as compile time polymorphism - Polymorphism that is resolved
+    during compiler time is known as static polymorphism. Method overloading is an example of compile
+    time polymorphism.
+    2) Dynamic Polymorphism also known as runtime polymorphism - It is also known as Dynamic
+    Method Dispatch. Dynamic polymorphism is a process in which a call to an overridden method is
+    resolved at runtime, that is why it is called runtime polymorphism
