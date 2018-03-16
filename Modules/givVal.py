@@ -24,6 +24,9 @@ n = 0
 def givVal(model_answer, keywords, answer, out_of):
     # KEYWORDS =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     # TODO : Enhacnce this thing
+    if (len(answer.split())) <= 5:
+        return 0
+
     count = 0
     keywords_count = len(keywords)
     for i in range(keywords_count):
