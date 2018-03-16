@@ -25,22 +25,23 @@ def givVal(model_answer, keywords, answer, out_of):
     # KEYWORDS =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     # TODO : Enhacnce this thing
     count = 0
-    for i in range(len(keywords)):
+    keywords_count = len(keywords)
+    for i in range(keywords_count):
         if keywords[i] in answer:
             # print (keywords[i])
             count = count + 1
     k = 0
-    if count == len(keywords):
+    if count == keywords_count:
         k = 1
-    elif count == (len(keywords) - 1):
+    elif count == (keywords_count - 1):
         k = 2
-    elif count == (len(keywords) - 2):
+    elif count == (keywords_count - 2):
         k = 3
-    elif count == (len(keywords) - 3):
+    elif count == (keywords_count - 3):
         k = 4
-    elif count == (len(keywords) - 4):
+    elif count == (keywords_count - 4):
         k = 5
-    elif count == (len(keywords) - 5):
+    elif count == (keywords_count - 5):
         k = 6
 
     # GRAMMAR =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
