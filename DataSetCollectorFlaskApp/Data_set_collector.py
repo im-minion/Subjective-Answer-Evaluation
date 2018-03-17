@@ -75,7 +75,7 @@ def foo():
 
         email = request.form['emailID']
 
-        ans = {"1": first, "2": second, "3": third, "email": email}
+        ans = {"a1": first, "a2": second, "a3": third, "email": email}
 
         result = db.child("/answers").push(ans)
 
