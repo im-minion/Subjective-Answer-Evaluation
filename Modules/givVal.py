@@ -122,17 +122,17 @@ all_answers = db.child("answers").get()
 
 for each_users_answers in all_answers.each():
     # For the first answer ->
-    answer = each_users_answers.val()['1']
+    answer = each_users_answers.val()['a1']
     result = givVal(model_answer1, keywords1, answer, out_of1)
     db.child("answers").child(each_users_answers.key()).update({"result1": result})
 
     # For the Second answer ->
-    answer = each_users_answers.val()['2']
+    answer = each_users_answers.val()['a2']
     result = givVal(model_answer2, keywords2, answer, out_of2)
     db.child("answers").child(each_users_answers.key()).update({"result2": result})
 
     # For the third answer ->
-    answer = each_users_answers.val()['3']
+    answer = each_users_answers.val()['a3']
     result = givVal(model_answer3, keywords3, answer, out_of3)
     db.child("answers").child(each_users_answers.key()).update({"result3": result})
 
