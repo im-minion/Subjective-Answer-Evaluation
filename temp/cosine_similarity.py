@@ -1,24 +1,48 @@
 import re, math
 from collections import Counter
 import fuzzywuzzy.fuzz
+
 WORD = re.compile(r'\w+')
 
+
 def get_cosine(vec1, vec2):
-     intersection = set(vec1.keys()) & set(vec2.keys())
-     numerator = sum([vec1[x] * vec2[x] for x in intersection])
+    intersection = set(vec1.keys()) & set(vec2.keys())
+    numerator = sum([vec1[x] * vec2[x] for x in intersection])
 
-     sum1 = sum([vec1[x]**2 for x in vec1.keys()])
-     sum2 = sum([vec2[x]**2 for x in vec2.keys()])
-     denominator = math.sqrt(sum1) * math.sqrt(sum2)
+    sum1 = sum([vec1[x] ** 2 for x in vec1.keys()])
+    sum2 = sum([vec2[x] ** 2 for x in vec2.keys()])
+    denominator = math.sqrt(sum1) * math.sqrt(sum2)
 
-     if not denominator:
+    if not denominator:
         return 0.0
-     else:
+    else:
         return float(numerator) / denominator
 
+
 def text_to_vector(text):
-     words = WORD.findall(text)
-     return Counter(words)
+    words = WORD.findall(text)
+    return Counter(words)
+
+
+def givKeywordsValue(text1, text2):
+    vector1 = text_to_vector(text1)
+    vector2 = text_to_vector(text2)
+    cosine = round(get_cosine(vector1, vector2),2)*100
+    kval = 0
+    if cosine > 90:
+        kval = 1
+    elif cosine > 80:
+        kval = 2
+    elif cosine > 60:
+        kval = 3
+    elif cosine > 40:
+        kval = 4
+    elif cosine > 20:
+        kval = 5
+    else:
+        kval = 6
+    return kval
+
 
 text1 = "Encapsulation is an object-oriented programming concept that binds together the data and functions that manipulate the data, and that keeps both safe from outside interference and misuse." \
         "Data encapsulation led to the important OOP concept of data hiding." \
@@ -35,10 +59,7 @@ text1 = "Encapsulation is an object-oriented programming concept that binds toge
 text2 = "It is object oreinted concept related to the data hiding. " \
         "Abstraction of the program is the encapsulation. It shows the relvant data. " \
         "It is the mechanism of binding the data, and the function that use them."
-vector1 = text_to_vector(text1)
-vector2 = text_to_vector(text2)
 
-cosine = get_cosine(vector1, vector2)
-
-print('Cosine:', cosine)
-print('Fuzzywuzzy: ', fuzzywuzzy.fuzz.token_set_ratio(vector1,vector2))
+a = givKeywordsValue(text1=text1, text2=text2)
+print(a)
+# print('Fuzzywuzzy: ', fuzzywuzzy.fuzz.token_set_ratio(vector1,vector2))

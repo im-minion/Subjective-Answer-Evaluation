@@ -6,6 +6,7 @@ import math
 import json
 import requests
 import re
+import temp.cosine_similarity as keywordVal
 
 '''
 e = 1
@@ -26,39 +27,41 @@ def givVal(model_answer, keywords, answer, out_of):
     # TODO : Enhacnce this thing
     if (len(answer.split())) <= 5:
         return 0
-
-    count = 0
-    keywords_count = len(keywords)
-    for i in range(keywords_count):
-        if keywords[i] in answer:
-            # print (keywords[i])
-            count = count + 1
-    k = 0
-    if count == keywords_count:
-        k = 1
-    elif count == (keywords_count - 1):
-        k = 2
-    elif count == (keywords_count - 2):
-        k = 3
-    elif count == (keywords_count - 3):
-        k = 4
-    elif count == (keywords_count - 4):
-        k = 5
-    elif count == (keywords_count - 5):
-        k = 6
+    #
+    # count = 0
+    # keywords_count = len(keywords)
+    # for i in range(keywords_count):
+    #     if keywords[i] in answer:
+    #         # print (keywords[i])
+    #         count = count + 1
+    # k = 0
+    # if count == keywords_count:
+    #     k = 1
+    # elif count == (keywords_count - 1):
+    #     k = 2
+    # elif count == (keywords_count - 2):
+    #     k = 3
+    # elif count == (keywords_count - 3):
+    #     k = 4
+    # elif count == (keywords_count - 4):
+    #     k = 5
+    # elif count == (keywords_count - 5):
+    #     k = 6
+    k = keywordVal.givKeywordsValue(model_answer, answer)
+    # print("checkkkkkk", k)
 
     # GRAMMAR =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     req = requests.get("https://api.textgears.com/check.php?text=" + answer + "&key=JmcxHCCPZ7jfXLF6")
     no_of_errors = len(req.json()['errors'])
 
-    if no_of_errors > 5:
+    if no_of_errors > 5 or k == 6:
         g = 0
     else:
         g = 1
 
     # QST =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
+    # TODO- chk for shard shinde
     print("fuzz1 ratio: ", fuzz.ratio(model_answer, answer))
     q = math.ceil(fuzz.token_set_ratio(model_answer, answer) * 6 / 100)
 
@@ -122,6 +125,7 @@ all_answers = db.child("answers").get()
 
 for each_users_answers in all_answers.each():
     # For the first answer ->
+    print(each_users_answers.val()['email'])
     answer = each_users_answers.val()['a1']
     result = givVal(model_answer1, keywords1, answer, out_of1)
     db.child("answers").child(each_users_answers.key()).update({"result1": result})
