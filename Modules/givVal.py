@@ -7,7 +7,7 @@ import json
 import requests
 import re
 import temp.cosine_similarity as keywordVal
-
+# TODO- Accuracy prediction library
 '''
 e = 1
 vg = 2
