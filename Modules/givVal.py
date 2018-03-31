@@ -61,13 +61,12 @@ def givVal(model_answer, keywords, answer, out_of):
         g = 1
 
     # QST =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    # TODO- chk for shard shinde
-    print("fuzz1 ratio: ", fuzz.ratio(model_answer, answer))
+    # print("fuzz1 ratio: ", fuzz.ratio(model_answer, answer))
     q = math.ceil(fuzz.token_set_ratio(model_answer, answer) * 6 / 100)
 
     print("Keywords : ", k)
-    print("Grammar : ", g)
-    print("Qusestion Specific Things : ", q)
+    print("Grammar  : ", g)
+    print("QST      : ", q)
 
     predicted = nav_test.predict(k, g, q)
     # Mathematical model->
@@ -125,19 +124,23 @@ all_answers = db.child("answers").get()
 
 for each_users_answers in all_answers.each():
     # For the first answer ->
-    print(each_users_answers.val()['email'])
+    print("\n\n"+each_users_answers.val()['email'])
+
     answer = each_users_answers.val()['a1']
     result = givVal(model_answer1, keywords1, answer, out_of1)
+    print("Marks : "+str(result))
     db.child("answers").child(each_users_answers.key()).update({"result1": result})
 
     # For the Second answer ->
     answer = each_users_answers.val()['a2']
     result = givVal(model_answer2, keywords2, answer, out_of2)
+    print("Marks : "+str(result))
     db.child("answers").child(each_users_answers.key()).update({"result2": result})
 
     # For the third answer ->
     answer = each_users_answers.val()['a3']
     result = givVal(model_answer3, keywords3, answer, out_of3)
+    print("Marks : "+str(result))
     db.child("answers").child(each_users_answers.key()).update({"result3": result})
 
 # out_of = 5

@@ -38,9 +38,9 @@ clf = pickle.load(pickle_in)
 def predict(k, g, q):
     predicted = clf.predict([[k, g, q]])
     accuracy = clf.predict_proba([[k, g, q]])
-    print(predicted)
-    print(accuracy)
-    print(np.max(accuracy))
+    print("class[1-9] : " + str(predicted))
+    # print(accuracy)
+    # print(np.max(accuracy))
     return predicted
 
 # predict(2,0,4)
