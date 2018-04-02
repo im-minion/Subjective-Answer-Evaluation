@@ -49,3 +49,23 @@ Fuzzy Logic is used to give the value of qst.
 
 
 (PS: I am begineer in ML and this is my first own project. For Any Suggestions please let me know here vaibhavminiyar@gmail.com )
+
+## Usage:
+
+As mentioned previously this project uses Firebase.
+
+So firstly for Firebase configurations,
+ ##### 1. Create a firebase project at https://console.firebase.google.com
+ 
+ ##### 2. Create "configurations.py" file at the root level and add the following
+
+config = {
+    "apiKey": "add your api key",
+    "authDomain": "add your domain>",
+    "databaseURL": "add your DB url >",
+    "projectId": "add your project id>",
+    "storageBucket": "add your storage bucket>",
+    "messagingSenderId": "add your message Id>"
+}
+
+##### 3. You will have to create model_answers child inside 
