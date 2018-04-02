@@ -1,4 +1,7 @@
 # Subjective-Answer-Evaluation
+
+### LOGIC and CONCEPT
+
 IDEA is to evalaute the subjective/descriptive answers from the model answer is provided.
 Basically for the first attempt I have ceated a Python Flask App which is hosted at https://pure-woodland-16548.herokuapp.com where student can give there answer.
 Currently It has 3 general OOPS related questions. After submiting the data goes to Firebase.
@@ -8,9 +11,9 @@ At the core NB classifier is working. With 21 recorde available in it.
 
 (This dataset is manually written by me after observing some real answersheets evalauted by university Professors.)
 
-(I know its very very very small dataset but still atleast read the complete documentation you'll get to know what it is! :) )
+(I know its very very very small dataset but still atleast read the complete documentation you'll get to know what I want to say! :) )
 
-(herer is that Datase-> https://github.com/im-minion/Subjective-Answer-Evaluation/blob/master/Modules/finaldataset.csv)
+(herer is that Dataset https://github.com/im-minion/Subjective-Answer-Evaluation/blob/master/Modules/finaldataset.csv)
 
 
 For doing this evaluation I have used 3 Parameters 
@@ -68,4 +71,18 @@ config = {
     "messagingSenderId": "add your message Id>"
 }
 
-##### 3. You will have to create model_answers child inside 
+##### 3. Then go to your Firebase Database console and import the json file "temp.json" inside temp folder
+
+(Just for an example i have used 3 questions and stored there model answer into DB itself. also this temp.json contains answers given by 9 users. So you can evaluate them)
+
+After that, to give the answers you can run Data_set_collector.py file inside the DataSetCollectoeFlaskApp directory. It is simple flask app which let users to answer the subjective questions.
+
+(Also for evaluating for your own question change the model answer in Firebase DB and the question in flask app and store them in DB as per requirements and test)
+
+The main algorithm is in "givVal.py" file inside Modules directory.
+
+Run that file and you will have the answers evaluated by the algorithm inside the DB and it will also print them in the terminal.
+
+:)
+
+Please Give me suggestions at - vaibhavminiyar@gmail.com

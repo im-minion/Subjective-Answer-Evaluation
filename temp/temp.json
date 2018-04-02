@@ -1,0 +1,76 @@
+{
+  "answers": {
+    "-L3xy5nqvCbfnn_eXSaX": {
+      "a1": "It is object oreinted concept related to the data hiding. Abstraction of the program is the encapsulation. It shows the relvant data. It is the mechanism of binding the data, and the function that use them.",
+      "a2": "time complexity analysis. Analyze the algorithm. Running time complexity analyse. Algorithms growth rate.It also measures the efficiency of the algorithm.",
+      "a3": "htrfgbtrgdfrgfcb",
+      "email": "vaibhavminiyar@gmail.com"
+    },
+    "-L7mptYdYLpLWiO5hVFF": {
+      "a1": "Defined as wrapping of data under a single unit.",
+      "a2": "Asymptotic notation are used to analyze an algorithm. Types are big o big omega big theta.",
+      "a3": "Ability to take more than on3 form. Types static and dynamic",
+      "email": "kulkarnipavan@gmail.com"
+    },
+    "-L7mxQ1XewHKEipvHJc7": {
+      "a1": "Encapsulation is process of wrapping up data as a single unit.",
+      "a2": "Asymptotic notations are used to identify an algorithma running time by identifying its behavior as input size. I.e it helps to identify the complexities of an algorithm. Types of asymptotic notations are 1. Big oh 2.Theta notation 3. Omega notation.",
+      "a3": "Polymorphism is nothing but ability of an object to take many forms. I.e one action can be performed in different ways. Types of polymorphiam are 1. Runtime Polymorphism 2. Compile time polymorphism",
+      "email": "rahulkulkarni223@gmail.com"
+    },
+    "-L7nCORktMYomi0h54NT": {
+      "a1": "Encapsulation is wrapping data in a single unit.",
+      "a2": "Asymptomatic notations are the measures used to describe complexity of algorithm.",
+      "a3": "Polymorphism is the property of having one  thing many forms.",
+      "email": "khalate.ajinkya18@gmail.com"
+    },
+    "-L7n_2OhUV22f2E0YdI4": {
+      "a1": "Abstraction is a process where you show only “relevant” data and “hide” unnecessary details of an object from the user. Encapsulation is the process of combining data and functions into a single unit called class. In Encapsulation, the data is not accessed directly; it is accessed through the functions present inside the class.",
+      "a2": "Asymptotic Notations are languages that allow us to analyze an algorithm’s running time by identifying its behavior as the input size for the algorithm increases. This is also known as an algorithm’s growth rate.\r\nTheta Notation: The theta notation bounds a functions from above and below, so it defines exact asymptotic behavior. A simple way to get Theta notation of an expression is to drop low order terms and ignore leading constants. For example, consider the following expression.\r\n3n3 + 6n2 + 6000 = Θ(n3) \r\n\r\nBig O Notation: The Big O notation defines an upper bound of an algorithm, it bounds a function only from above.\r\nThe Big O notation is useful when we only have upper bound on time complexity of an algorithm. Many times we easily find an upper bound by simply looking at the algorithm.\r\n\r\nΩ Notation: Just as Big O notation provides an asymptotic upper bound on a function, Ω notation provides an asymptotic lower bound. Ω Notation  can be useful when we have lower bound on time complexity of an algorithm",
+      "a3": "In object-oriented programming, polymorphism \"having multiple forms\"  is the characteristic of being able to assign a different meaning or usage to something in different contexts - specifically, to allow an entity such as a variable, a function, or an object to have more than one form. There are several different kinds of polymorphism.",
+      "email": "sachin.patil521@gmail.com"
+    },
+    "-L8a2wa_D6rYf0CCOqT6": {
+      "a1": ", encapsulation is used to refer to one of two related but distinct notions, and sometimes to the combination thereof: A language mechanism for restricting direct access to some of the object's components.",
+      "a2": "Asymptotic Notations are languages that allow us to analyze an algorithm's running time by identifying its behavior as the input size for the algorithm increases. This is also known as an algorithm's growth rate.",
+      "a3": "In programming languages and type theory, polymorphism is the provision of a single interface to entities of different types. A polymorphic type is one whose operations can also be applied to values of some other type, or types",
+      "email": "mayur4979@gmail.com"
+    },
+    "-L8kFET3KTx7T83uroro": {
+      "a1": "Data hinding and abstraction ",
+      "a2": "Asymptotic notation are used to evaluate the complexity of the program in terms of input size\r\n1.Big o\r\n2. Sigma\r\n3.theta",
+      "a3": "Poly means many and morphism means form . polymorphism is the basically same name but different working\r\n1.runtime\r\n2.compiletime",
+      "email": "madhuminiyar@gmail.com"
+    },
+    "-L8kJHOdlmy_G0neV5T8": {
+      "a1": "Encapsulation is a property in oops concept which hides the values or state of the objects to prevent the unauthorised access by anyone. An Object of a class is an example of encapsulation , object is used to store all the properties of a class in one single element and it also protects them using access specifiers like public,protected and private. ",
+      "a2": "Asymptotic notations is a type of language which is used to determine the running time of an algorithm with increasing input size. Asymptotic Notations consists of two types :- \r\n1. Big Notations \r\n2. Small Notations\r\n\r\nThere are 3 types of Big Notations they are :-\r\n1. Big-O\r\n2. Big-Omega\r\n3. Big-Thetha\r\n\r\nThere are 2 types of small notations :-\r\n1. Small - o\r\n2. Small - omega",
+      "a3": "Polymorphism is a property in oop's concept by which a single state can have multiple forms for example a single single function can be executed differently with different parameters. Types of polymorphism are :- \r\n1. Function overloading\r\n2. Operator overloading\r\n3. Virtual function",
+      "email": "nakkasrikar@gmail.com"
+    },
+    "-L8kX_xGFBzFl8TKHumx": {
+      "a1": "Encapsulation is a data hiding process where the data and its behaviour are bind together. It is one of the four OOPS concept.\r\nFor eg. In a capsule or medicine, the nutrients and vitamins are wrapped in a cover hiding them.",
+      "a2": "They are mechanism to interpret the running time of algorithms depending on the input size. They can be big oh notation, omega notation or theta notation.",
+      "a3": "Polymorphism is a OOPS concept where an object can take various forms. Polymorphism is used when a parent class reference is used to refer a child class object. Its types are:\r\n1. compile time \r\n2. run time",
+      "email": "ambikagoyal26@gmail.com"
+    }
+  },
+  "model_answers": [
+    null,
+    {
+      "answer": "Encapsulation is an object-oriented programming concept that binds together the data and functions that manipulate the data, and that keeps both safe from outside interference and misuse.Data encapsulation led to the important OOP concept of data hiding. If a class does not allow calling code to access internal object data and permits access through methods only, this is a strong form of abstraction or information hiding known as encapsulation. Data encapsulation is a mechanism of bundling the data, and the functions that use them and data abstraction is a mechanism of exposing only the interfaces and hiding the implementation details from the user. Abstraction and encapsulation are complementary concepts: abstraction focuses on the observable behavior of an object. encapsulation focuses upon the implementation that gives rise to this behavior. encapsulation is most often achieved through information hiding, which is the process of hiding all of the secrets of object that do not contribute to its essential characteristics.  Encapsulation is the process of combining data and functions into a single unit called class. In Encapsulation, the data is not accessed directly; it is accessed through the functions present inside the class. In simpler words, attributes of the class are kept private and public getter and setter methods are provided to manipulate these attributes. Thus, encapsulation makes the concept of data hiding possible Abstraction is a process where you show only “relevant” data and “hide” unnecessary details of an object from the user.",
+      "keywords": "['binds', 'together', 'relevant data', 'data hiding', 'data hiding', 'abstraction', 'combining data']",
+      "out_of": 5
+    },
+    {
+      "answer": "Asymptotic Notations are languages that allow us to analyze an algorithm's running time by identifying its behavior as the input size for the algorithm increases. This is also known as an algorithm's growth rate. Main Types - 1. Big 2.Small 1. Big Notation further divided into three types- 1)Big O 2)Big Omega 3)Big Theta 2. Small Notation further divided into three types- 1)Small o 2)Small Theta",
+      "keywords": "['Analysing Algorithm', 'analyse running time','represent time complexity of algorithms','measure the efficiency']",
+      "out_of": 5
+    },
+    {
+      "answer": "Polymorphism means to process objects differently based on their data type.     In other words it means, one method with multiple implementation, for a certain class of action. And     which implementation to be used is decided at runtime depending upon the situation (i.e., data type of     the object)     This can be implemented by designing a generic interface, which provides generic methods for a certain     class of action and there can be multiple classes, which provides the implementation of these generic     methods.     In object-oriented programming, polymorphism refers to a programming language&#39;s ability to process     objects differently depending on their data type or class. More specifically, it is the ability to redefine     methods for derived classes. 1) Static Polymorphism also known as compile time polymorphism - Polymorphism that is resolved     during compiler time is known as static polymorphism. Method overloading is an example of compile     time polymorphism.     2) Dynamic Polymorphism also known as runtime polymorphism - It is also known as Dynamic     Method Dispatch. Dynamic polymorphism is a process in which a call to an overridden method is     resolved at runtime, that is why it is called runtime polymorphism.",
+      "keywords": "['one name many forms' , 'generic interface', 'implementation', 'runtime', 'same method name', 'same function name']",
+      "out_of": 5
+    }
+  ]
+}
