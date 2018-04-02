@@ -7,7 +7,7 @@ Basically for the first attempt I have ceated a Python Flask App which is hosted
 Currently It has 3 general OOPS related questions. After submiting the data goes to Firebase.
 And when the "givVal.py" script is executed it will evaluate and store in Firebase DB the answers of each question based on ML algorithm that I have implemented.
 
-At the core NB classifier is working. With 21 recorde available in it.
+At the core NB classifier is working. With 21 records available in it.
 
 (This dataset is manually written by me after observing some real answersheets evalauted by university Professors.)
 
@@ -51,7 +51,8 @@ Fuzzy Logic is used to give the value of qst.
 (FuzzyWuzzy libraray from https://github.com/seatgeek/fuzzywuzzy this is used. Thanks for that :) ).
 
 
-(PS: I am begineer in ML and this is my first own project. For Any Suggestions please let me know here vaibhavminiyar@gmail.com )
+
+(note: I am begineer in ML and this is my first project in ML. For Any Suggestions please let me know here vaibhavminiyar@gmail.com )
 
 ## Usage:
 
@@ -61,21 +62,22 @@ So firstly for Firebase configurations,
  ##### 1. Create a firebase project at https://console.firebase.google.com
  
  ##### 2. Create "configurations.py" file at the root level and add the following
-
+```
 config = {
     "apiKey": "add your api key",
-    "authDomain": "add your domain>",
-    "databaseURL": "add your DB url >",
-    "projectId": "add your project id>",
-    "storageBucket": "add your storage bucket>",
-    "messagingSenderId": "add your message Id>"
+    "authDomain": "add your domain",
+    "databaseURL": "add your DB url",
+    "projectId": "add your project id",
+    "storageBucket": "add your storage bucket",
+    "messagingSenderId": "add your message Id"
 }
+```
 
-##### 3. Then go to your Firebase Database console and import the json file "temp.json" inside temp folder
+##### 3. Then go to your Firebase Database console click start in realtime databse (select test mode if popo-up comes i.e. database rules must be true for read and write both) and import the json file "temp.json" inside temp folder.
 
-(Just for an example i have used 3 questions and stored there model answer into DB itself. also this temp.json contains answers given by 9 users. So you can evaluate them)
+(In temp.json just for an example I have included 3 questions and stored there model answer too. "temp.json" also contains answers given by 9 users. So you can evaluate/test them.)
 
-After that, to give the answers you can run Data_set_collector.py file inside the DataSetCollectoeFlaskApp directory. It is simple flask app which let users to answer the subjective questions.
+After that, to give the answers you can run Data_set_collector.py file inside the DataSetCollectoeFlaskApp directory and can give your answers. It is simple flask app which let users to answer the subjective questions.
 
 (Also for evaluating for your own question change the model answer in Firebase DB and the question in flask app and store them in DB as per requirements and test)
 
@@ -85,4 +87,4 @@ Run that file and you will have the answers evaluated by the algorithm inside th
 
 :)
 
-Please Give me suggestions at - vaibhavminiyar@gmail.com
+for any issues drop an email - vaibhavminiyar@gmail.com
