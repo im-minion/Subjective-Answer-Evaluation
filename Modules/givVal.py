@@ -7,6 +7,7 @@ import requests
 from fuzzywuzzy import fuzz
 
 import Modules.cosine_similarity as keywordVal
+import configurations
 
 # TODO- Accuracy prediction library
 '''
@@ -85,16 +86,7 @@ def givVal(model_answer, keywords, answer, out_of):
 
 # keywords = ['binds', 'together', 'relevant data', 'data hiding', 'data hiding', 'abstraction', 'combining data']
 
-config = {
-    "apiKey": "AIzaSyDmbVrxMd2l1Pq18zTvquLUlgBCIPErqqY",
-    "authDomain": "datasetcollector-b1daa.firebaseapp.com",
-    "databaseURL": "https://datasetcollector-b1daa.firebaseio.com",
-    "projectId": "datasetcollector-b1daa",
-    "storageBucket": "datasetcollector-b1daa.appspot.com",
-    "messagingSenderId": "532795544470"
-}
-
-firebsevar = pyrebase.initialize_app(config=config)
+firebsevar = pyrebase.initialize_app(config=configurations.config)
 db = firebsevar.database()
 
 model_answer1 = db.child("model_answers").get().val()[1]['answer']
@@ -125,23 +117,23 @@ all_answers = db.child("answers").get()
 
 for each_users_answers in all_answers.each():
     # For the first answer ->
-    print("\n\n"+each_users_answers.val()['email'])
+    print("\n\n" + each_users_answers.val()['email'])
 
     answer = each_users_answers.val()['a1']
     result = givVal(model_answer1, keywords1, answer, out_of1)
-    print("Marks : "+str(result))
+    print("Marks : " + str(result))
     db.child("answers").child(each_users_answers.key()).update({"result1": result})
 
     # For the Second answer ->
     answer = each_users_answers.val()['a2']
     result = givVal(model_answer2, keywords2, answer, out_of2)
-    print("Marks : "+str(result))
+    print("Marks : " + str(result))
     db.child("answers").child(each_users_answers.key()).update({"result2": result})
 
     # For the third answer ->
     answer = each_users_answers.val()['a3']
     result = givVal(model_answer3, keywords3, answer, out_of3)
-    print("Marks : "+str(result))
+    print("Marks : " + str(result))
     db.child("answers").child(each_users_answers.key()).update({"result3": result})
 
 # out_of = 5
