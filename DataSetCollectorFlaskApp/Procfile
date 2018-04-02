@@ -1,1 +1,0 @@
-web: gunicorn Data_set_collector:app

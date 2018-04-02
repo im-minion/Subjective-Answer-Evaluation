@@ -1,2 +1,9 @@
+.vscode
 temp/temmp.py
+temp/text_file.txt
+DataSetCollectorFlaskApp/env
+DataSetCollectorFlaskApp/Procfile
+DataSetCollectorFlaskApp/requirements.txt
+DataSetCollectorFlaskApp/templates/AuthThings.html
+DataSetCollectorFlaskApp/templates/submitted.html
 configurations.py
