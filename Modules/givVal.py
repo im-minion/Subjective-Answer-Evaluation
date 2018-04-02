@@ -1,12 +1,13 @@
-from fuzzywuzzy import fuzz
-from fuzzywuzzy import process
+import math
+import re
+
 import nav_test
 import pyrebase
-import math
-import json
 import requests
-import re
-import temp.cosine_similarity as keywordVal
+from fuzzywuzzy import fuzz
+
+import Modules.cosine_similarity as keywordVal
+
 # TODO- Accuracy prediction library
 '''
 e = 1
