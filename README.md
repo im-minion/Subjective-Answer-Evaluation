@@ -55,6 +55,19 @@ Fuzzy Logic is used to give the value of qst.
 (note: I am begineer in ML and this is my first project in ML. For Any Suggestions please let me know here vaibhavminiyar@gmail.com )
 
 ## Usage:
+First of all the list of all the required python libraries is as follows:
+```
+flask
+pyrebase
+re
+math
+collections
+fuzzywuzzy
+sklearn
+pandas
+numpy
+pickle
+```
 
 As mentioned previously this project uses Firebase.
 
@@ -77,12 +90,12 @@ config = {
 
 (In temp.json just for an example I have included 3 questions and stored there model answer too. "temp.json" also contains answers given by 9 users. So you can evaluate/test them.)
 
-After that, to give the answers you can run Data_set_collector.py file inside the DataSetCollectoeFlaskApp directory and can give your answers. It is simple flask app which let users to answer the subjective questions.
+Now, next step is to run the programs
+#### 4. So, To give the answers you can run Data_set_collector.py file inside the DataSetCollectoeFlaskApp directory and can give your answers. It is simple flask app which let users to answer the subjective questions.
 
 (Also for evaluating for your own question change the model answer in Firebase DB and the question in flask app and store them in DB as per requirements and test)
 
-The main algorithm is in "givVal.py" file inside Modules directory.
-
+#### 5. The main algorithm is in "givVal.py" file inside Modules directory.
 Run that file and you will have the answers evaluated by the algorithm inside the DB and it will also print them in the terminal.
 
 :)
