@@ -55,24 +55,20 @@ Fuzzy Logic is used to give the value of qst.
 (note: I am begineer in ML and this is my first project in ML. For Any Suggestions please let me know here vaibhavminiyar@gmail.com )
 
 ## Usage:
-First of all the list of all the required python libraries is as follows:
+First of all clone this repository using following command:
 
-(You can also fond them at the "requirements.txt" file at the root level of this project)
-```
-flask
-pyrebase
-re
-math
-collections
-fuzzywuzzy
-sklearn
-pandas
-numpy
-pickle
-```
-As mentioned previously this project uses Firebase.
+```git clone https://github.com/im-minion/Subjective-Answer-Evaluation.git```
 
-So firstly for Firebase configurations,
+or download https://github.com/im-minion/Subjective-Answer-Evaluation this repository. 
+
+Then You can find the "requirements.txt" file at the root level of this project which contains all the requirements of this project. For installing these requirements open terminal and run the following command
+
+```
+cd path/to/Subjective-Answer-Evaluation
+pip install -r requirements.txt
+```
+
+Now, As mentioned previously that this project uses Firebase. So for the Firebase configurations,
  ##### 1. Create a firebase project at https://console.firebase.google.com
  
  ##### 2. Create "configurations.py" file at the root level and add the following
