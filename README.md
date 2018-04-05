@@ -88,7 +88,7 @@ config = {
 
 ##### 3. Then go to your Firebase Database console click start in realtime databse (select test mode if popo-up comes i.e. database rules must be true for read and write both) and import the json file "temp.json" inside temp folder.
 
-(In temp.json just for an example I have included 3 questions and stored there model answer too. "temp.json" also contains answers given by 9 users. So you can evaluate/test them.)
+(In temp.json just for an example three model answer and there answers given by 9 users/students are included. So you can evaluate/test them.)
 
 Now, next step is to run the programs
 #### 4. So, To give the answers you can run Data_set_collector.py file inside the DataSetCollectoeFlaskApp directory and can give your answers. It is simple flask app which let users to answer the subjective questions.
