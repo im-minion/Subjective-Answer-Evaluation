@@ -56,6 +56,8 @@ Fuzzy Logic is used to give the value of qst.
 
 ## Usage:
 First of all the list of all the required python libraries is as follows:
+
+(You can also fond them at the "requirements.txt" file at the root level of this project)
 ```
 flask
 pyrebase
@@ -68,7 +70,6 @@ pandas
 numpy
 pickle
 ```
-
 As mentioned previously this project uses Firebase.
 
 So firstly for Firebase configurations,
