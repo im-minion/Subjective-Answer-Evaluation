@@ -97,4 +97,7 @@ Run that file and you will have the answers evaluated by the algorithm inside th
 
 :)
 
+
+
 for any issues drop an email - vaibhavminiyar@gmail.com
+(For getting the results evalauted by algorithm download this [Android Application](https://drive.google.com/open?id=1OSTLtEltRqbW5QHsRMfPmwMDU9zl5f90)
